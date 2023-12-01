@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Homepage</title>
+  <!-- Your CSS and other head elements -->
+</head>
+<body>
+  <header>
+    <!-- Navigation Links -->
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        {{#if isLoggedIn}}
+          <li><a href="/logout">Logout</a></li>
+        {{else}}
+          <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to the Blog</h1>
+    {{#if posts.length}}
+      <!-- Display Existing Blog Posts -->
+      <div class="blog-posts">
+        {{#each posts}}
+          <div class="post">
+            <h2>{{title}}</h2>
+            <p>{{content}}</p>
+            <p>Posted by: {{author}}</p>
+            <p>Date: {{createdAt}}</p>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p>No blog posts yet.</p>
+    {{/if}}
+  </main>
+
+  <!-- Your scripts and other body elements -->
+</body>
+</html>
