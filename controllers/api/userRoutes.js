@@ -18,7 +18,7 @@ router.get('/', (req,res) => {
 
 router.get('/:id', (req,res) => {
     User.findOne({
-        attributes: {exclude: ['Password'] },
+        attributes: {exclude: ['password'] },
         where: {
             id: req.params.id
         },
@@ -60,8 +60,9 @@ router.get('/:id', (req,res) => {
     });
 });
 
-//Create new User
-router.post('/', (req,res) => {
+// Create new User
+router.post('/', (req, res) => {
+    // Add validation for req.body here
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -69,7 +70,7 @@ router.post('/', (req,res) => {
     })
     .then(dbUserData => {
         req.session.save(() => {
-            req.session.user_id = dbUserData.id
+            req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
             res.json(dbUserData);
@@ -77,7 +78,7 @@ router.post('/', (req,res) => {
     })
     .catch(err => {
         console.log(err);
-        res.status.apply(500).json(err);
+        res.status(500).json(err);
     });
 });
 
