@@ -66,24 +66,25 @@ router.get('/:id', (req,res) => {
 
 
 //Update a post
-router.put('/:id', withAuth, (req,res) => {
+router.put('/:id', withAuth, (req, res) => {
   Post.update({
-    title: req.body.title,
-    content: req.body.content,
+      title: req.body.title,
+      content: req.body.content,
   }, {
-    where: {
-      id: req.params.id
-    }
+      where: {
+          id: req.params.id
+      }
   })
   .then(dbPostData => {
-    if(!dbPostData) {
-      res.status(404).json({ message: 'No Post found with this id' });
-      return;
-    }
+      if (!dbPostData) {
+          res.status(404).json({ message: 'No Post found with this id' });
+          return;
+      }
+      res.json({ message: 'Post updated successfully' });
   })
   .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
+      console.log(err);
+      res.status(500).json(err);
   });
 });
 
