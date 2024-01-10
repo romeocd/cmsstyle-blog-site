@@ -1,0 +1,20 @@
+<!-- Login HTML -->
+<div class="card">
+    <div class="card-header">
+        <h2>Login</h2>
+    </div>
+    <form id="login-form" class="card-body" method="POST" action="/login">
+        <div>
+            <label for="username-input-login">Username</label>
+            <input type="text" id="username-input-login" name="username" required />
+        </div>
+        <div>
+            <label for="password-input-login">Password</label>
+            <input type="password" id="password-input-login" name="password" required />
+        </div>
+        <button type="submit" id="login-btn" class="btn">Login</button>
+        <a href="/signup">Sign up</a>
+    </form>
+</div>
+
+<script src="/javascript/login.js"></script>
