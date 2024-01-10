@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blog Homepage</title>
-  <!-- Your CSS and other head elements -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title> <!-- Dynamic title -->
+  <!-- Link to your CSS and any other head elements -->
 </head>
 <body>
   <header>
@@ -22,24 +23,23 @@
   </header>
 
   <main>
-    <h1>Welcome to the Blog</h1>
+    <h1>{{header}}</h1> <!-- Dynamic header -->
     {{#if posts.length}}
-      <!-- Display Existing Blog Posts -->
-      <div class="blog-posts">
+      <section class="blog-posts">
         {{#each posts}}
-          <div class="post">
+          <article class="post">
             <h2>{{title}}</h2>
             <p>{{content}}</p>
             <p>Posted by: {{author}}</p>
-            <p>Date: {{createdAt}}</p>
-          </div>
+            <time datetime="{{createdAt}}">Date: {{formatDate createdAt}}</time>
+          </article>
         {{/each}}
-      </div>
+      </section>
     {{else}}
       <p>No blog posts yet.</p>
     {{/if}}
   </main>
 
-  <!-- Your scripts and other body elements -->
+  <!-- Link to your scripts and other body elements -->
 </body>
 </html>
