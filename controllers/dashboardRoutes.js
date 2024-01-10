@@ -26,3 +26,8 @@ router.get('/', withAuth, (req,res => {
     });
 }));
 
+//Route to render the form to add a new post
+router.get('/new', withAuth, (req,res) => {
+    res.render('new-post', { loggedIn: true });
+});
+
